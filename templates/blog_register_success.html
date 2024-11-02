@@ -20,7 +20,7 @@
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
             style="font-size: 16px;">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none me-2">
-                <img src="../static/images/LAMDA.png" alt="" height="40">
+                <img src="/static/images/LAMDA.png" alt="" height="40">
             </a>
 
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -47,19 +47,19 @@
                 </a>
                 <ul class="dropdown-menu text-small">
                     {% if request.user.blog %}
-                    <li><a class="dropdown-item" href="/blog/{{ title }}">My blog</a></li>
+                    <li><a class="dropdown-item" href="/blog/{{ request.user.blog.title }}/">My blog</a></li>
                     {% else %}
-                    <li><a class="dropdown-item" href="/blogRegister">My blog</a></li>
+                    <li><a class="dropdown-item" href="/blogRegister/">My blog</a></li>
                     {% endif %}
                     <li><a class="dropdown-item" href="#">My profile</a></li>
                     <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="/logout">logout</a></li>
+                    <li><a class="dropdown-item" href="/logout/">logout</a></li>
                 </ul>
             </div>
             {% else %}
             <div class="text-end">
-                <a href="/login" class="btn btn-outline-primary">Sign in</a>
-                <a href="/register" class="btn btn-primary">Sign up</a>
+                <a href="/login/" class="btn btn-outline-primary">Sign in</a>
+                <a href="/register/" class="btn btn-primary">Sign up</a>
             </div>
             {% endif %}
         </div>
@@ -71,11 +71,11 @@
         </div>
         <hr>
         <div class="mt-2">
-            <h6>congratulations! Your blog registration has been successful. Your blog is: {{ url }}</h6>
+            <h6>congratulations! Your blog registration has been successful. Your blog is: <a href="{{ request.user.blog.url }}"></a>{{ request.user.blog.url }}</h6>
         </div>
         <hr>
         <div class="mt-2">
-            <a href="{{ url }}" class="btn btn-primary">Enter</a>
+            <a href="{{ request.user.blog.url }}" class="btn btn-primary">Enter</a>
         </div>
     </div>
 

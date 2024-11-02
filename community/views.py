@@ -24,11 +24,6 @@ class IndexView(View):
         current_page = request.GET.get('page',1)
         article_list = Article.objects.all().order_by('-create_time')
 
-        try: 
-            title = Blog.objects.get(user=request.user).title
-        except Exception as e:
-            return render(request,'404.html',{})
-
         # 添加分页功能
         paginatorObj = Paginator(object_list=article_list,per_page=8)
         # 当前页
@@ -51,7 +46,7 @@ class IndexView(View):
             
         page_list = range(start,end+1)
         
-        return render(request,'index.html',{'article_list':page_article_obj,'page_list':page_list,'title':title})
+        return render(request,'index.html',{'article_list':page_article_obj,'page_list':page_list})
 
 
 
@@ -67,14 +62,20 @@ class blogRegisterView(LoginRequiredMixin,View):
             url = 'http://127.0.0.1:8000/blog/' + sub_url
             theme = form.cleaned_data.get('theme')
             blog_obj = Blog.objects.create(title=sub_url,url=url,theme=theme,user=request.user)
-            return render(request,'blog_register_success.html',{'url':url}) 
+            return redirect('blogRegister/success')
         else:
             return JsonResponse({'code':400,'message':'参数错误!'})
+
+
+class blogRegisterSuccessView(LoginRequiredMixin,View):
+    def get(self,request):
+        return render(request,'blog_register_success.html',{}) 
+
         
 
 class profileIndexView(LoginRequiredMixin,View):
     def get(self,request):
-        return render(request,'profile.html',{})
+        return render(request,'profile/index.html',{})
 
 # # 咨询问题
 # class askQuestionView(View):

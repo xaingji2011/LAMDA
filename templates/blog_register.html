@@ -47,7 +47,7 @@
                 </a>
                 <ul class="dropdown-menu text-small">
                     {% if request.user.blog %}
-                    <li><a class="dropdown-item" href="/blog/{{ title }}">My blog</a></li>
+                    <li><a class="dropdown-item" href="/blog/{{ request.user.blog.title }}">My blog</a></li>
                     {% else %}
                     <li><a class="dropdown-item" href="/blogRegister">My blog</a></li>
                     {% endif %}

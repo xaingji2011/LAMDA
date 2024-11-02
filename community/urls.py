@@ -6,6 +6,8 @@ urlpatterns = [
     # Home page
     path('',views.IndexView.as_view()),
     # Blog register
-    path('blog/register/',views.blogRegisterView.as_view()),
+    path('blogRegister/',views.blogRegisterView.as_view()),
+    # BLog register successfully
+    path('blogRegister/success',views.blogRegisterSuccessView.as_view()),
     path('profile/',views.profileIndexView.as_view())
 ]

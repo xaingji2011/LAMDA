@@ -1,10 +1,10 @@
 from django.urls import path,re_path
 
-# from . import views
+from . import views
 
 urlpatterns = [
-    # # 个人博客首页
-    # path('blog/<str:title>/',views.blogIndexView.as_view()),
+    # 个人博客首页
+    path('blog/<str:title>/',views.blogIndexView.as_view()),
     # # 新建文章
     # path('article/edit',views.blogPubView.as_view()),
     # # 博客后台

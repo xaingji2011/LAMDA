@@ -81,8 +81,10 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'LAMDA',        #数据库名字
         'USER': 'root',          #账号
-        'PASSWORD': 'cxj123',      #密码
-        'HOST': '127.0.0.1',    #IP
+        'PASSWORD': 'root',      #密码
+        # 'PASSWORD': 'cxj123',      #密码
+        'HOST': '192.168.1.13',    #IP
+        # 'HOST': '127.0.0.1',    #IP
         'PORT': '3306',                   #端口
     }
 }
